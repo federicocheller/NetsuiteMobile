@@ -5,4 +5,7 @@ function sayhi(requestParams)
     var o = new Object();
     o.sayhi = 'Hello World! k:' + k;
     return o;
+
+
+    ///TODO: nlapiSearchRecord
 }
