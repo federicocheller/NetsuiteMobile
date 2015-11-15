@@ -10,7 +10,8 @@ function get(requestParams)
     {
         var result = [];
         var oaColumns = [new nlobjSearchColumn('internalid'),new nlobjSearchColumn('tranid'),new nlobjSearchColumn('trandate'),new nlobjSearchColumn('amount'),new nlobjSearchColumn('status')];
-        var oSrch = nlapiSearchRecord(type, null, null, oaColumns);
+        var oaFilters = [new nlobjSearchFilter('mainline',null,'is','T')];
+        var oSrch = nlapiSearchRecord(type, null, oaFilters, oaColumns);
         if(oSrch != null && oSrch.length > 0) {
             for (var i = 0; i < oSrch.length; i++) {
                 var record = {
