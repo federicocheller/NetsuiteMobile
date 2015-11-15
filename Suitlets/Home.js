@@ -7,6 +7,7 @@ run = function(request, response) {
         html += '<meta charset="utf-8">';
         html += '<meta http-equiv="X-UA-Compatible" content="IE=edge">';
         html += '<title>Netsuite Mobile</title>';
+        html += '<link rel="shortcut icon" href="https://system.na1.netsuite.com/core/media/media.nl?id=10395&c=TSTDRV1275821&h=55c461df6c72d0b8b4ab&_xt=.ico" type="image/x-icon" />';
         html += '<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">';
         html += '<link rel="stylesheet" href="https://system.na1.netsuite.com/core/media/media.nl?id=10389&c=TSTDRV1275821&h=624989697e1528e70a25&_xt=.css">';
         html += '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">';
@@ -41,7 +42,7 @@ run = function(request, response) {
         html += '</li>';
         html += '<li class="user-footer">';
         html += '<div class="pull-right">';
-        html += '<a href="#" class="btn btn-default btn-flat">Sign out</a>';
+        html += '<a href="/pages/nllogoutnoback.jsp" class="btn btn-default btn-flat">Sign out</a>';
         html += '</div>';
         html += '</li>';
         html += '</ul>';
@@ -69,7 +70,8 @@ run = function(request, response) {
         html += '<li><a href="#"><i class="fa fa-table"></i> <span>Sales orders</span></a></li>';
         html += '<li><a href="#"><i class="fa fa-table"></i> <span>Invoices</span></a></li>';
         html += '<li><a href="#"><i class="fa fa-table"></i> <span>Return authorizations</span></a></li>';
-        html += '<li><a href="#"><i class="fa fa-edit"></i> <span>Contact us</span></a></li>';
+        html += '<li><a href="#"><i class="fa fa-users"></i> <span>Contacts</span></a></li>';
+        html += '<li><a href="#"><i class="fa fa-question-circle"></i> <span>Need help</span></a></li>';
         html += '</ul>';
         html += '</section>';
         html += '</aside>';
