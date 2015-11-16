@@ -16,7 +16,7 @@ run = function(request, response) {
         html += '<link rel="stylesheet" href="https://system.na1.netsuite.com/core/media/media.nl?id=10390&c=TSTDRV1275821&h=cd69d12df5132c9eea34&_xt=.css">';
         html += '<!--[if lt IE 9]><script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script><script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->';
         html += '</head>';
-        html += '<body class="hold-transition skin-blue-light sidebar-mini">';
+        html += '<body class="hold-transition skin-blue-light sidebar-mini" ng-app="nsmobile">';
         html += '<div class="wrapper">';
         html += '<header class="main-header">';
         html += '<a href="" class="logo">';
@@ -32,12 +32,12 @@ run = function(request, response) {
         html += '<li class="dropdown user user-menu">';
         html += '<a href="#" class="dropdown-toggle" data-toggle="dropdown">';
         html += '<img id="img-user-image" class="user-image" class="img-circle" alt="User Image" />';
-        html += '<span class="hidden-xs">' + nlapiGetContext().name + '</span>';
+        html += '<span class="hidden-xs">' + nlapiGetContext().getName() + '</span>';
         html += '</a>';
         html += '<ul class="dropdown-menu">';
         html += '<li class="user-header">';
         html += '<img id="img-user-header" src="" class="img-circle" alt="User Image" />';
-        html += '<p>' + nlapiGetContext().name + '<small>' + nlapiGetContext().email + '</small>';
+        html += '<p>' + nlapiGetContext().getName() + '<small>' + nlapiGetContext().getEmail() + '</small>';
         html += '</p>';
         html += '</li>';
         html += '<li class="user-footer">';
@@ -64,31 +64,31 @@ run = function(request, response) {
         html += '</span>';
         html += '</div>';
         html += '</form>';
-        html += '<ul class="sidebar-menu">';
+        html += '<ul class="sidebar-menu" ng-controller="sidebar-menuController">';
         html += '<li class="header">MAIN NAVIGATION</li>';
-        html += '<li class="active"><a href="#"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>';
-        html += '<li><a href="#"><i class="fa fa-table"></i> <span>Sales orders</span></a></li>';
-        html += '<li><a href="#"><i class="fa fa-table"></i> <span>Invoices</span></a></li>';
-        html += '<li><a href="#"><i class="fa fa-table"></i> <span>Return authorizations</span></a></li>';
-        html += '<li><a href="#"><i class="fa fa-users"></i> <span>Contacts</span></a></li>';
-        html += '<li><a href="#"><i class="fa fa-question-circle"></i> <span>Need help</span></a></li>';
+        html += '<li class="active"><a href="#" ng-click="menu(1,$event)"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>';
+        html += '<li><a href="#" ng-click="menu(2,$event)"><i class="fa fa-table"></i> <span>Sales orders</span></a></li>';
+        html += '<li><a href="#" ng-click="menu(3,$event)"><i class="fa fa-table"></i> <span>Invoices</span></a></li>';
+        html += '<li><a href="#" ng-click="menu(4,$event)"><i class="fa fa-table"></i> <span>Return authorizations</span></a></li>';
+        html += '<li><a href="#" ng-click="menu(5,$event)"><i class="fa fa-users"></i> <span>Contacts</span></a></li>';
+        html += '<li><a href="#" ng-click="menu(6,$event)"><i class="fa fa-question-circle"></i> <span>Need help</span></a></li>';
         html += '</ul>';
         html += '</section>';
         html += '</aside>';
         html += '<div class="content-wrapper">';
-        html += '<section class="content-header">';
+        html += '<section class="content-header" ng-controller="content-headerController">';
         html += '<h1>Dashboard';
         html += '<small>Optional description</small>';
         html += '</h1>';
         html += '<ol class="breadcrumb">';
         html += '<li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>';
-        html += '<li class="active">Here</li>';
+        html += '<li class="active">{{header}}</li>';
         html += '</ol>';
         html += '</section>';
-        html += '<section class="content">';
+        html += '<section class="content" ng-controller="contentController">';
+        html += '{{content}}';
 
-
-        html += '<input type=button value=CALL onclick=\'$.ajax({url: "/app/site/hosting/restlet.nl?script=941&deploy=1&k=2",type: "GET",beforeSend: function(xhr){xhr.setRequestHeader("Content-Type", "application/json");},success: function(data) { alert("Success!"+data.sayhi); }});\' />';
+        //html += '<input type=button value=CALL onclick=\'$.ajax({url: "/app/site/hosting/restlet.nl?script=941&deploy=1&k=2",type: "GET",beforeSend: function(xhr){xhr.setRequestHeader("Content-Type", "application/json");},success: function(data) { alert("Success!"+data.sayhi); }});\' />';
 
 
         html += '</section>';
@@ -97,13 +97,13 @@ run = function(request, response) {
         html += '<div class="pull-right hidden-xs">Clustin srl</div>';
         html += '<strong>Copyright &copy; 2015 <a href="http://www.clustin.com">Clustin</a>.</strong> All rights reserved.';
         html += '</footer>';
-        html += '<aside class="control-sidebar control-sidebar-dark">';
+        html += '<aside class="control-sidebar control-sidebar-dark" ng-controller="aside-menuController">';
         html += '<div class="tab-content">';
         html += '<div class="tab-pane active" id="control-sidebar-home-tab">';
         html += '<h3 class="control-sidebar-heading">Settings</h3>';
         html += '<ul class="control-sidebar-menu">';
         html += '<li>';
-        html += '<a href="javascript::;">';
+        html += '<a href="#" ng-click="menu(1,$event)">';
         html += '<i class="menu-icon fa fa-envelope bg-orange"></i>';
         html += '<div class="menu-info">';
         html += '<h4 class="control-sidebar-subheading">Change email</h4>';
@@ -111,8 +111,8 @@ run = function(request, response) {
         html += '</a>';
         html += '</li>';
         html += '<li>';
-        html += '<a href="javascript::;">';
-        html += '<i class="menu-icon fa fa-asterisk bg-red"></i>';
+        html += '<a href="#" ng-click="menu(2,$event)">';
+        html += '<i class="menu-icon fa fa-lock bg-red"></i>';
         html += '<div class="menu-info">';
         html += '<h4 class="control-sidebar-subheading">Change password</h4>';
         html += '</div>';
@@ -128,8 +128,9 @@ run = function(request, response) {
         html += '<script src="https://system.na1.netsuite.com/core/media/media.nl?id=10392&c=TSTDRV1275821&h=420733b45492a949ec05&_xt=.js"></script>';
         html += '<script src="https://system.na1.netsuite.com/core/media/media.nl?id=10394&c=TSTDRV1275821&h=2bf29d0e64e149c4d723&_xt=.js"></script>';
         html += '<script src="https://system.na1.netsuite.com/core/media/media.nl?id=10393&c=TSTDRV1275821&h=9c2980ac16a21ddb485c&_xt=.js"></script>';
+        html += '<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>';
         html += '<script src="https://system.na1.netsuite.com/core/media/media.nl?id=10391&c=TSTDRV1275821&h=8b8b32e539240737dc36&_xt=.js"></script>';
-        html += '<script>var src = getGravatar("'+ nlapiGetContext().email +'", 160);$("#img-user-image").attr("src", src);$("#img-user-header").attr("src", src);</script>';
+        html += '<script>var idUser="' + nlapiGetContext().getUser() + '";var srcUser=getGravatar("'+ nlapiGetContext().getEmail() +'", 160);$("#img-user-image").attr("src", srcUser);$("#img-user-header").attr("src", srcUser);</script>';
         html += '</body></html>';
 
 
