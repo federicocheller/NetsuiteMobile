@@ -77,12 +77,12 @@ run = function(request, response) {
         html += '</aside>';
         html += '<div class="content-wrapper">';
         html += '<section class="content-header">';
-        html += '<h1>Dashboard';
-        html += '<small>Optional description</small>';
+        html += '<h1>{{pageTitle}}';
+        html += '<small></small>';
         html += '</h1>';
         html += '<ol class="breadcrumb">';
-        html += '<li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>';
-        html += '<li class="active">{{header}}</li>';
+        html += '<li><a href="#"><i class="fa fa-dashboard"></i> Level1</a></li>';
+        html += '<li class="active">Level2</li>';
         html += '</ol>';
         html += '</section>';
         html += '<section class="content">';
@@ -103,7 +103,7 @@ run = function(request, response) {
         html += '<h3 class="control-sidebar-heading">Settings</h3>';
         html += '<ul class="control-sidebar-menu">';
         html += '<li>';
-        html += '<a href="#" ng-click="menu(1,$event)">';
+        html += '<a href="#" ng-click="asideMenu(1,$event)">';
         html += '<i class="menu-icon fa fa-envelope bg-orange"></i>';
         html += '<div class="menu-info">';
         html += '<h4 class="control-sidebar-subheading">Change email</h4>';
@@ -111,7 +111,7 @@ run = function(request, response) {
         html += '</a>';
         html += '</li>';
         html += '<li>';
-        html += '<a href="#" ng-click="menu(2,$event)">';
+        html += '<a href="#" ng-click="asideMenu(2,$event)">';
         html += '<i class="menu-icon fa fa-lock bg-red"></i>';
         html += '<div class="menu-info">';
         html += '<h4 class="control-sidebar-subheading">Change password</h4>';
@@ -133,9 +133,6 @@ run = function(request, response) {
         html += '<script>var idUser="' + nlapiGetContext().getUser() + '";var srcUser=getGravatar("'+ nlapiGetContext().getEmail() +'", 160);$("#img-user-image").attr("src", srcUser);$("#img-user-header").attr("src", srcUser);</script>';
         html += '</body></html>';
 
-
-
-
         response.write(html);
 
 
@@ -148,14 +145,6 @@ run = function(request, response) {
         //html += "<br><input type='button' value='READ CONTACTS' onclick=\"var a = {'Content-Type': 'application/json'};var b = nlapiRequestURL('/app/site/hosting/restlet.nl?script=945&deploy=1&id=" + nlapiGetContext().user + "', null, a);alert(JSON.stringify(b));\" >";
         //var htmlInstruct = form.addField('custpage_p1', 'inlinehtml').setLayoutType('outsideabove', 'startrow');
         //htmlInstruct.setDefaultValue(html);
-
-
-
-
-
-        ///SAMPLE ADD ELEMENT IN FORM
-        //form.addButton('aaa', 'Inserisci', 'alert(\'Clienti:\' + nlapiGetFieldValue(\'xxx\'));');
-        //form.addField('xxx', 'multiselect', 'Clienti', 'customer');
 
 
         ///SAMPLE FOR CHANGE MAIL & PASSWORD
