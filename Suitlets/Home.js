@@ -17,7 +17,7 @@ run = function(request, response) {
         html += '<!--[if lt IE 9]><script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script><script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->';
         html += '</head>';
         html += '<body class="hold-transition skin-blue-light sidebar-mini" ng-app="nsmobile">';
-        html += '<div class="wrapper">';
+        html += '<div class="wrapper" ng-controller="wrapperController">';
         html += '<header class="main-header">';
         html += '<a href="" class="logo">';
         html += '<span class="logo-mini"><b>CLU</b></span>';
@@ -64,7 +64,7 @@ run = function(request, response) {
         html += '</span>';
         html += '</div>';
         html += '</form>';
-        html += '<ul class="sidebar-menu" ng-controller="sidebar-menuController">';
+        html += '<ul class="sidebar-menu">';
         html += '<li class="header">MAIN NAVIGATION</li>';
         html += '<li class="active"><a href="#" ng-click="menu(1,$event)"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>';
         html += '<li><a href="#" ng-click="menu(2,$event)"><i class="fa fa-table"></i> <span>Sales orders</span></a></li>';
@@ -76,7 +76,7 @@ run = function(request, response) {
         html += '</section>';
         html += '</aside>';
         html += '<div class="content-wrapper">';
-        html += '<section class="content-header" ng-controller="content-headerController">';
+        html += '<section class="content-header">';
         html += '<h1>Dashboard';
         html += '<small>Optional description</small>';
         html += '</h1>';
@@ -85,8 +85,8 @@ run = function(request, response) {
         html += '<li class="active">{{header}}</li>';
         html += '</ol>';
         html += '</section>';
-        html += '<section class="content" ng-controller="contentController">';
-        html += '{{content}}';
+        html += '<section class="content">';
+        html += '{{contentBody}}';
 
         //html += '<input type=button value=CALL onclick=\'$.ajax({url: "/app/site/hosting/restlet.nl?script=941&deploy=1&k=2",type: "GET",beforeSend: function(xhr){xhr.setRequestHeader("Content-Type", "application/json");},success: function(data) { alert("Success!"+data.sayhi); }});\' />';
 
@@ -97,7 +97,7 @@ run = function(request, response) {
         html += '<div class="pull-right hidden-xs">Clustin srl</div>';
         html += '<strong>Copyright &copy; 2015 <a href="http://www.clustin.com">Clustin</a>.</strong> All rights reserved.';
         html += '</footer>';
-        html += '<aside class="control-sidebar control-sidebar-dark" ng-controller="aside-menuController">';
+        html += '<aside class="control-sidebar control-sidebar-dark">';
         html += '<div class="tab-content">';
         html += '<div class="tab-pane active" id="control-sidebar-home-tab">';
         html += '<h3 class="control-sidebar-heading">Settings</h3>';
