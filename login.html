@@ -5,6 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Clustin | Netsuite Mobile</title>
     <link rel="shortcut icon" href="https://system.na1.netsuite.com/core/media/media.nl?id=10395&c=TSTDRV1275821&h=55c461df6c72d0b8b4ab&_xt=.ico" type="image/x-icon" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="grey" />
+    <meta name="msapplication-TileColor" content="#00A6CF"/>
+    <meta name="msapplication-TileImage" content="https://system.na1.netsuite.com/core/media/media.nl?id=10403&c=TSTDRV1275821&h=a190dc3a36eac801d8d1"/>
+    <meta name="msapplication-square150x150logo" content="https://system.na1.netsuite.com/core/media/media.nl?id=10402&c=TSTDRV1275821&h=fd967fd86a75c8bfa62d" />
+    <meta name="msapplication-wide310x150logo" content="https://system.na1.netsuite.com/core/media/media.nl?id=10404&c=TSTDRV1275821&h=86a1c713df485eb34193" />
+    <meta name="msapplication-square310x310logo" content="https://system.na1.netsuite.com/core/media/media.nl?id=10401&c=TSTDRV1275821&h=4f6dfd6d2c1ca001fe58" />
+    <link rel="apple-touch-icon" href="https://system.na1.netsuite.com/core/media/media.nl?id=10400&c=TSTDRV1275821&h=e8f4f69c7d14ed566911" />
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="https://system.na1.netsuite.com/core/media/media.nl?id=10389&c=TSTDRV1275821&h=624989697e1528e70a25&_xt=.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -23,7 +31,7 @@
     </div>
     <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your session</p>
-        <form method="post" action="/app/login/nllogin.nl" onsubmit="if (typeof(this.submitted)!='undefined') return false; if (checkemail(email,false,true) && checknotempty(document.forms[0].password,'Password')) {this.submitted=1;return true;} else return false; ">
+        <form method="post" action="/app/login/nllogin.nl" onsubmit="if (typeof(this.submitted)!='undefined') return false; if (checknotempty(document.forms[0].password,'Password')) {this.submitted=1;return true;} else return false; ">
             <div class="form-group has-feedback">
                 <input type="email" class="form-control" placeholder="Email" name="email" size="30" required autofocus onchange="rememberme.checked=false;">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -61,6 +69,59 @@
         name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
         var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"), results = regex.exec(location.search);
         return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+    function setLoginCookie(createCookie)
+    {
+        if(createCookie)
+        {
+            var expireDate = new Date();
+            expireDate.setMonth(expireDate.getMonth()+24);
+            var userName = document.forms[0].elements['email'].value;
+            document.cookie = "OSBuserName="+userName+"; path=/; domain=.system.na1.netsuite.com; expires="+expireDate.toGMTString();
+        }
+        else
+        {
+            if (document.cookie.indexOf("OSBuserName=") > -1)
+            {
+                expireDate = new Date();
+                expireDate.setDate(expireDate.getDate()-1);
+                document.cookie = "OSBuserName=blah; path=/; domain=.system.na1.netsuite.com; expires="+expireDate.toGMTString();
+            }
+        }
+        document.cookie = "ScreenWidth="+screen.width+"; path=/; domain=.system.na1.netsuite.com";
+        document.cookie = "ScreenHeight="+screen.height+"; path=/; domain=.system.na1.netsuite.com";
+    }
+    function isValEmpty(val)
+    {
+        if (val === null || val === undefined)
+            return true;
+        val = new String(val);
+        return (val.length == 0) || !/\S/.test(val);
+    }
+    function checkvalnotempty(val,alertMessage)
+    {
+        if (isValEmpty(val))
+        {
+            if (alertMessage)
+            {
+                alert(alertMessage);
+            }
+            return false;
+        }
+        return true;
+    }
+    function checknotempty(fld1,nam)
+    {
+        if (!checkvalnotempty(fld1.value, 'Please enter a value for {1}'.replace('{1}',nam)))
+        {
+            try {
+                fld1.focus();
+                fld1.select();
+            } catch (e) { }
+            return false;
+        }
+
+        return true;
     }
     $(function () {
         $('input').iCheck({

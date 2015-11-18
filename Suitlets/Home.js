@@ -8,6 +8,14 @@ run = function(request, response) {
         html += '<meta http-equiv="X-UA-Compatible" content="IE=edge">';
         html += '<title>Netsuite Mobile</title>';
         html += '<link rel="shortcut icon" href="https://system.na1.netsuite.com/core/media/media.nl?id=10395&c=TSTDRV1275821&h=55c461df6c72d0b8b4ab&_xt=.ico" type="image/x-icon" />';
+        html += '<meta name="apple-mobile-web-app-capable" content="yes" />';
+        html += '<meta name="apple-mobile-web-app-status-bar-style" content="grey" />';
+        html += '<meta name="msapplication-TileColor" content="#00A6CF"/>';
+        html += '<meta name="msapplication-TileImage" content="https://system.na1.netsuite.com/core/media/media.nl?id=10403&c=TSTDRV1275821&h=a190dc3a36eac801d8d1"/>';
+        html += '<meta name="msapplication-square150x150logo" content="https://system.na1.netsuite.com/core/media/media.nl?id=10402&c=TSTDRV1275821&h=fd967fd86a75c8bfa62d" />';
+        html += '<meta name="msapplication-wide310x150logo" content="https://system.na1.netsuite.com/core/media/media.nl?id=10404&c=TSTDRV1275821&h=86a1c713df485eb34193" />';
+        html += '<meta name="msapplication-square310x310logo" content="https://system.na1.netsuite.com/core/media/media.nl?id=10401&c=TSTDRV1275821&h=4f6dfd6d2c1ca001fe58" />';
+        html += '<link rel="apple-touch-icon" href="https://system.na1.netsuite.com/core/media/media.nl?id=10400&c=TSTDRV1275821&h=e8f4f69c7d14ed566911" />';
         html += '<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">';
         html += '<link rel="stylesheet" href="https://system.na1.netsuite.com/core/media/media.nl?id=10389&c=TSTDRV1275821&h=624989697e1528e70a25&_xt=.css">';
         html += '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">';
@@ -66,12 +74,12 @@ run = function(request, response) {
         html += '</form>';
         html += '<ul class="sidebar-menu">';
         html += '<li class="header">MAIN NAVIGATION</li>';
-        html += '<li class="active"><a href="#" ng-click="menu(1,$event)"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>';
-        html += '<li><a href="#" ng-click="menu(2,$event)"><i class="fa fa-table"></i> <span>Sales orders</span></a></li>';
-        html += '<li><a href="#" ng-click="menu(3,$event)"><i class="fa fa-table"></i> <span>Invoices</span></a></li>';
-        html += '<li><a href="#" ng-click="menu(4,$event)"><i class="fa fa-table"></i> <span>Return authorizations</span></a></li>';
-        html += '<li><a href="#" ng-click="menu(5,$event)"><i class="fa fa-users"></i> <span>Contacts</span></a></li>';
-        html += '<li><a href="#" ng-click="menu(6,$event)"><i class="fa fa-question-circle"></i> <span>Need help</span></a></li>';
+        html += '<li class="active"><a href="#" ng-click="menu(\'dashboard\',$event)"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>';
+        html += '<li><a href="#" ng-click="menu(\'salesorders\',$event)"><i class="fa fa-table"></i> <span>Sales orders</span></a></li>';
+        html += '<li><a href="#" ng-click="menu(\'invoices\',$event)"><i class="fa fa-table"></i> <span>Invoices</span></a></li>';
+        html += '<li><a href="#" ng-click="menu(\'returnauthorizations\',$event)"><i class="fa fa-table"></i> <span>Return authorizations</span></a></li>';
+        html += '<li><a href="#" ng-click="menu(\'contacts\',$event)"><i class="fa fa-users"></i> <span>Contacts</span></a></li>';
+        html += '<li><a href="#" ng-click="menu(\'help\',$event)"><i class="fa fa-question-circle"></i> <span>Need help</span></a></li>';
         html += '</ul>';
         html += '</section>';
         html += '</aside>';
@@ -89,7 +97,95 @@ run = function(request, response) {
 
         html += '<div class="row"><div class="col-xs-12"><div class="box">';
 
-        html += '{{contentBody}}';
+        html += '<ng-include src="contentBody"></ng-include>';
+
+        html += '<script type="text/ng-template" id="templateTransactions">' +
+            '<div class="box-body"><div id="transactions_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-sm-12">' +
+            '<table id="transactions" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">' +
+            '<thead>' +
+            '<tr role="row">' +
+            '<th class="sorting_asc text-uppercase" tabindex="0" aria-controls="transactions" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Transaction id: activate to sort column descending">Transaction Id</th>' +
+            '<th class="sorting text-uppercase" tabindex="0" aria-controls="transactions" rowspan="1" colspan="1" aria-label="Transaction date: activate to sort column ascending">Transaction date</th>' +
+            '<th class="sorting text-uppercase" tabindex="0" aria-controls="transactions" rowspan="1" colspan="1" aria-label="Amount: activate to sort column ascending">Amount</th>' +
+            '<th class="sorting text-uppercase" tabindex="0" aria-controls="transactions" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending">Status</th>' +
+            '</tr>' +
+            '</thead>' +
+            '<tbody>' +
+            '<tr role="row" class="odd" ng-repeat="transaction in transactions">' +
+            '<td class="sorting_1"><a href="#" ng-click="transactionMenu($event)"><u>{{transaction.tranid}}</u></a><input type="hidden" value="{{transaction.internalid}}"><input type="hidden" value="{{transaction.type}}"></td>' +
+            '<td>{{transaction.trandate}}</td>' +
+            '<td>{{transaction.amount}}</td>' +
+            '<td><span class="label label-primary">{{transaction.status}}</span></td>' +
+            '</tr>' +
+            '</tbody>' +
+            '</table>' +
+            '</div></div></div></div>' +
+            '</script>';
+
+        html += '<script type="text/ng-template" id="templateTransaction">' +
+            '<section class="invoice">' +
+            '  <div class="row">' +
+            '	<div class="col-xs-12">' +
+            '	  <h2 class="page-header"> ' +
+            '		<i class="fa fa-globe"></i> {{transaction.entity.name}}' +
+            '		<small class="pull-right">Date: {{transaction.trandate}}</small>' +
+            '	  </h2>' +
+            '	</div>' +
+            '  </div>  ' +
+            '  <div class="row invoice-info">  ' +
+            '   <div class="col-sm-4 invoice-col">  ' +
+            '    <b>Transaction #{{transaction.tranid}}</b><br><br>' +
+            '    <b>Currency:</b> {{transaction.currencyname}}<br>' +
+            '    <b>Last modified:</b> {{transaction.lastmodifieddate}}<br><br>' +
+            '   </div>' +
+            '  </div>' +
+            '  <div class="row">' +
+            '   <div class="col-xs-12 table-responsive">' +
+            '    <table class="table table-striped">' +
+            '     <thead>' +
+            '      <tr>' +
+            '  <th>Qty</th>' +
+            '  <th>Product</th>' +
+            '  <th>Amount</th>' +
+            '  <th>Tax Rate</th>' +
+            '  <th>Subtotal</th>' +
+            '     </tr>' +
+            '    </thead>' +
+            '    <tbody>' +
+            '     <tr ng-repeat="item in transaction.item">' +
+            '       <td>{{item.quantity}}</td>' +
+            '       <td>{{item.item.name}}</td>' +
+            '       <td>{{item.amount}}</td>' +
+            '       <td>{{item.taxrate1}}</td>' +
+            '       <td>{{item.grossamt}}</td>' +
+            '     </tr>' +
+            '    </tbody>' +
+            '   </table>' +
+            '  </div>' +
+            ' </div>' +
+            ' <div class="row">' +
+            '  <div class="col-xs-12"> ' +
+            '  <p class="lead">Amount Due {{transaction.duedate}}</p>' +
+            '  <div class="table-responsive">' +
+            '    <table class="table">' +
+            '<tbody><tr> ' +
+            '  <th style="width:50%">Subtotal:</th>' +
+            '  <td>{{transaction.subtotal}}</td>' +
+            '</tr>' +
+            '<tr>' +
+            '  <th>Tax</th>' +
+            '  <td>{{transaction.taxtotal}}</td>' +
+            '</tr>' +
+            '<tr>' +
+            '  <th>Total:</th>' +
+            '  <td>{{transaction.total}}</td>' +
+            '</tr>' +
+            '    </tbody></table>' +
+            '   </div>' +
+            '  </div>' +
+            ' </div>' +
+            '</section>' +
+            '</script>';
 
         html += '<div class="overlay {{refreshHide}}"><i class="fa fa-refresh fa-spin"></i></div>';
         html += '</div></div></div>';
@@ -109,7 +205,7 @@ run = function(request, response) {
         html += '<h3 class="control-sidebar-heading">Settings</h3>';
         html += '<ul class="control-sidebar-menu">';
         html += '<li>';
-        html += '<a href="#" ng-click="asideMenu(1,$event)">';
+        html += '<a href="#" ng-click="asideMenu(\'changeemail\',$event)">';
         html += '<i class="menu-icon fa fa-envelope bg-orange"></i>';
         html += '<div class="menu-info">';
         html += '<h4 class="control-sidebar-subheading">Change email</h4>';
@@ -117,7 +213,7 @@ run = function(request, response) {
         html += '</a>';
         html += '</li>';
         html += '<li>';
-        html += '<a href="#" ng-click="asideMenu(2,$event)">';
+        html += '<a href="#" ng-click="asideMenu(\'changepassword\',$event)">';
         html += '<i class="menu-icon fa fa-lock bg-red"></i>';
         html += '<div class="menu-info">';
         html += '<h4 class="control-sidebar-subheading">Change password</h4>';

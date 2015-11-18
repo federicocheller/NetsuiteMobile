@@ -19,7 +19,8 @@ function get(requestParams)
                     , tranid: oSrch[i].getValue('tranid')
                     , trandate: oSrch[i].getValue('trandate')
                     , amount: oSrch[i].getValue('amount')
-                    , status: oSrch[i].getValue('status')
+                    , status: oSrch[i].getText('status')
+                    , type: type
                 };
 
                 result.push(record);
