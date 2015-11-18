@@ -86,7 +86,13 @@ run = function(request, response) {
         html += '</ol>';
         html += '</section>';
         html += '<section class="content">';
+
+        html += '<div class="row"><div class="col-xs-12"><div class="box">';
+
         html += '{{contentBody}}';
+
+        html += '<div class="overlay {{refreshHide}}"><i class="fa fa-refresh fa-spin"></i></div>';
+        html += '</div></div></div>';
 
         //html += '<input type=button value=CALL onclick=\'$.ajax({url: "/app/site/hosting/restlet.nl?script=941&deploy=1&k=2",type: "GET",beforeSend: function(xhr){xhr.setRequestHeader("Content-Type", "application/json");},success: function(data) { alert("Success!"+data.sayhi); }});\' />';
 
