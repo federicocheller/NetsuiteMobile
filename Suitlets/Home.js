@@ -17,11 +17,11 @@ run = function(request, response) {
         html += '<meta name="msapplication-square310x310logo" content="https://system.na1.netsuite.com/core/media/media.nl?id=10401&c=TSTDRV1275821&h=4f6dfd6d2c1ca001fe58" />';
         html += '<link rel="apple-touch-icon" href="https://system.na1.netsuite.com/core/media/media.nl?id=10400&c=TSTDRV1275821&h=e8f4f69c7d14ed566911" />';
         html += '<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">';
-        html += '<link rel="stylesheet" href="https://system.na1.netsuite.com/core/media/media.nl?id=10389&c=TSTDRV1275821&h=624989697e1528e70a25&_xt=.css">';
+        html += '<!-- bootstrap --><link rel="stylesheet" href="https://system.na1.netsuite.com/core/media/media.nl?id=10389&c=TSTDRV1275821&h=624989697e1528e70a25&_xt=.css">';
         html += '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">';
         html += '<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">';
-        html += '<link rel="stylesheet" href="https://system.na1.netsuite.com/core/media/media.nl?id=10388&c=TSTDRV1275821&h=7b7f98d69a86804ab05d&_xt=.css">';
-        html += '<link rel="stylesheet" href="https://system.na1.netsuite.com/core/media/media.nl?id=10390&c=TSTDRV1275821&h=cd69d12df5132c9eea34&_xt=.css">';
+        html += '<!-- adminlte --><link rel="stylesheet" href="https://system.na1.netsuite.com/core/media/media.nl?id=10388&c=TSTDRV1275821&h=7b7f98d69a86804ab05d&_xt=.css">';
+        html += '<!-- adminlte theme --><link rel="stylesheet" href="https://system.na1.netsuite.com/core/media/media.nl?id=10390&c=TSTDRV1275821&h=cd69d12df5132c9eea34&_xt=.css">';
         html += '<!--[if lt IE 9]><script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script><script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->';
         html += '</head>';
         html += '<body class="hold-transition skin-blue-light sidebar-mini" ng-app="nsmobile">';
@@ -112,7 +112,7 @@ run = function(request, response) {
             '</thead>' +
             '<tbody>' +
             '<tr role="row" class="odd" ng-repeat="transaction in transactions">' +
-            '<td class="sorting_1"><a href="#" ng-click="transactionMenu($event)"><u>{{transaction.tranid}}</u></a><input type="hidden" value="{{transaction.internalid}}"><input type="hidden" value="{{transaction.type}}"></td>' +
+            '<td class="sorting_1" ng-click="transactionMenu($event)" style="cursor:pointer"><a href="#"><u>{{transaction.tranid}}</u></a><input type="hidden" value="{{transaction.internalid}}"><input type="hidden" value="{{transaction.type}}"></td>' +
             '<td>{{transaction.trandate}}</td>' +
             '<td>{{transaction.amount}}</td>' +
             '<td><span class="label label-primary">{{transaction.status}}</span></td>' +
@@ -164,8 +164,8 @@ run = function(request, response) {
             '  </div>' +
             ' </div>' +
             ' <div class="row">' +
-            '  <div class="col-xs-12"> ' +
-            '  <p class="lead">Amount Due {{transaction.duedate}}</p>' +
+            '  <div class="col-xs-12"><br>' +
+            '  <p ng-if="transaction.duedate" class="lead">Amount Due {{transaction.duedate}}</p>' +
             '  <div class="table-responsive">' +
             '    <table class="table">' +
             '<tbody><tr> ' +
@@ -184,7 +184,7 @@ run = function(request, response) {
             '   </div>' +
             '  </div>' +
             ' </div>' +
-            '</section>' +
+            '</section><br><br>' +
             '</script>';
 
         html += '<div class="overlay {{refreshHide}}"><i class="fa fa-refresh fa-spin"></i></div>';
@@ -226,12 +226,12 @@ run = function(request, response) {
         html += '</aside>';
         html += '<div class="control-sidebar-bg"></div>';
         html += '</div>';
-        html += '<script src="https://system.na1.netsuite.com/core/media/media.nl?id=9985&c=TSTDRV1275821&h=5036f344c5a30de930c5&_xt=.js"></script>';
-        html += '<script src="https://system.na1.netsuite.com/core/media/media.nl?id=10392&c=TSTDRV1275821&h=420733b45492a949ec05&_xt=.js"></script>';
-        html += '<script src="https://system.na1.netsuite.com/core/media/media.nl?id=10394&c=TSTDRV1275821&h=2bf29d0e64e149c4d723&_xt=.js"></script>';
-        html += '<script src="https://system.na1.netsuite.com/core/media/media.nl?id=10393&c=TSTDRV1275821&h=9c2980ac16a21ddb485c&_xt=.js"></script>';
+        html += '<!-- jquery --><script src="https://system.na1.netsuite.com/core/media/media.nl?id=9985&c=TSTDRV1275821&h=5036f344c5a30de930c5&_xt=.js"></script>';
+        html += '<!-- bootstrap --><script src="https://system.na1.netsuite.com/core/media/media.nl?id=10392&c=TSTDRV1275821&h=420733b45492a949ec05&_xt=.js"></script>';
+        html += '<!-- jquery.slimscroll --><script src="https://system.na1.netsuite.com/core/media/media.nl?id=10394&c=TSTDRV1275821&h=2bf29d0e64e149c4d723&_xt=.js"></script>';
+        html += '<!-- fastclick --><script src="https://system.na1.netsuite.com/core/media/media.nl?id=10393&c=TSTDRV1275821&h=9c2980ac16a21ddb485c&_xt=.js"></script>';
         html += '<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>';
-        html += '<script src="https://system.na1.netsuite.com/core/media/media.nl?id=10391&c=TSTDRV1275821&h=8b8b32e539240737dc36&_xt=.js"></script>';
+        html += '<!-- app --><script src="https://system.na1.netsuite.com/core/media/media.nl?id=10391&c=TSTDRV1275821&h=8b8b32e539240737dc36&_xt=.js"></script>';
         html += '<script>var idUser="' + nlapiGetContext().getUser() + '";var srcUser=getGravatar("'+ nlapiGetContext().getEmail() +'", 160);$("#img-user-image").attr("src", srcUser);$("#img-user-header").attr("src", srcUser);</script>';
         html += '</body></html>';
 

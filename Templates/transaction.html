@@ -1,0 +1,65 @@
+<section class="invoice">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2 class="page-header">
+                <i class="fa fa-globe"></i>{{transaction.entity.name}}
+                <small class="pull-right">Date: {{transaction.trandate}}</small>
+            </h2>
+        </div>
+    </div>
+    <div class="row invoice-info">
+        <div class="col-sm-4 invoice-col">
+            <b>Transaction #{{transaction.tranid}}</b><br><br>
+            <b>Currency:</b>{{transaction.currencyname}}<br>
+            <b>Last modified:</b>{{transaction.lastmodifieddate}}<br><br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Qty</th>
+                    <th>Product</th>
+                    <th>Amount</th>
+                    <th>Tax Rate</th>
+                    <th>Subtotal</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in transaction.item">
+                    <td>{{item.quantity}}</td>
+                    <td>{{item.item.name}}</td>
+                    <td>{{item.amount}}</td>
+                    <td>{{item.taxrate1}}</td>
+                    <td>{{item.grossamt}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12"><br>
+            <p ng-if="transaction.duedate" class="lead">Amount Due {{transaction.duedate}}</p>
+            <div class="table-responsive">
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <th style="width:50%">Subtotal:</th>
+                        <td>{{transaction.subtotal}}</td>
+                    </tr>
+                    <tr>
+                        <th>Tax</th>
+                        <td>{{transaction.taxtotal}}</td>
+                    </tr>
+                    <tr>
+                        <th>Total:</th>
+                        <td>{{transaction.total}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<br><br>
