@@ -122,6 +122,20 @@ run = function(request, response) {
             '</div></div></div></div>' +
             '</script>';
 
+        html += '<script type="text/ng-template" id="templateContacts">' +
+            '<div class="box-body"><div class="row">' +
+            '<div class="col-lg-3 col-xs-6" ng-repeat="contact in contacts">' +
+            '<div class="small-box bg-aqua">' +
+            '<div class="inner">' +
+            '<p><strong>{{contact.entityid}}</strong></p>' +
+            '<p>{{contact.email}}</p>' +
+            '<p>Phone: {{contact.phone}}</p>' +
+            '</div>' +
+            '<div class="icon">' +
+            '<i class="fa fa-user"></i>' +
+            '</div></div></div></div></div>' +
+            '</script>';
+
         html += '<script type="text/ng-template" id="templateTransaction">' +
             '<section class="invoice">' +
             '  <div class="row">' +
@@ -190,9 +204,6 @@ run = function(request, response) {
         html += '<div class="overlay {{refreshHide}}"><i class="fa fa-refresh fa-spin"></i></div>';
         html += '</div></div></div>';
 
-        //html += '<input type=button value=CALL onclick=\'$.ajax({url: "/app/site/hosting/restlet.nl?script=941&deploy=1&k=2",type: "GET",beforeSend: function(xhr){xhr.setRequestHeader("Content-Type", "application/json");},success: function(data) { alert("Success!"+data.sayhi); }});\' />';
-
-
         html += '</section>';
         html += '</div>';
         html += '<footer class="main-footer">';
@@ -239,6 +250,9 @@ run = function(request, response) {
 
 
         // CALL WITH NS API FORM
+
+        //html += '<input type=button value=CALL onclick=\'$.ajax({url: "/app/site/hosting/restlet.nl?script=941&deploy=1&k=2",type: "GET",beforeSend: function(xhr){xhr.setRequestHeader("Content-Type", "application/json");},success: function(data) { alert("Success!"+data.sayhi); }});\' />';
+
         //html += "<br><input type='button' value='CALL RESTLET TEST' onclick=\"var a = {'Content-Type': 'application/json'};var b = nlapiRequestURL('/app/site/hosting/restlet.nl?script=941&deploy=1&k=2', null, a);alert(JSON.stringify(b));\" >";
         //html += "<br><input type='button' value='READ SALES ORDERS' onclick=\"var a = {'Content-Type': 'application/json'};var b = nlapiRequestURL('/app/site/hosting/restlet.nl?script=944&deploy=1&type=salesorder', null, a);alert(JSON.stringify(b));\" >";
         //html += "<br><input type='button' value='READ SALES ORDER' onclick=\"var a = {'Content-Type': 'application/json'};var b = nlapiRequestURL('/app/site/hosting/restlet.nl?script=944&deploy=1&type=salesorder&id=12618', null, a);alert(JSON.stringify(b));\" >";

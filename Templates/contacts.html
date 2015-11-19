@@ -1,0 +1,18 @@
+<script type="text/ng-template" id="templateContacts">
+    <div class="box-body">
+        <div class="row">
+            <div class="col-lg-3 col-xs-6" ng-repeat="contact in contacts">
+                <div class="small-box bg-aqua">
+                    <div class="inner">
+                        <p><strong>{{contact.entityid}}</strong></p>
+                        <p>{{contact.email}}</p>
+                        <p>Phone: {{contact.phone}}</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-user"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
