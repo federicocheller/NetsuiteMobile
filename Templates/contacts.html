@@ -2,11 +2,13 @@
     <div class="box-body">
         <div class="row">
             <div class="col-lg-3 col-xs-6" ng-repeat="contact in contacts">
-                <div class="small-box bg-aqua">
+                <div class="small-box bg-aqua" itemscope itemtype="http://schema.org/Person">
                     <div class="inner">
-                        <p><strong>{{contact.entityid}}</strong></p>
-                        <p>{{contact.email}}</p>
-                        <p>Phone: {{contact.phone}}</p>
+                        <p><strong itemprop="name">&nbsp;&nbsp;{{contact.entityid}}</strong></p>
+                        <p>&nbsp;<span ng-if="contact.contactrole"><i class="fa fa-tag"></i>&nbsp;&nbsp;&nbsp;{{contact.contactrole}}</a></span></p>
+                        <p>&nbsp;<span ng-if="contact.email" itemprop="email"><i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;{{contact.email}}</span></p>
+                        <p>&nbsp;<span ng-if="contact.phone" itemprop="telephone"><i class="fa fa-phone-square"></i>&nbsp;&nbsp;&nbsp;<a href="tel:{{contact.phone}}" class="white">{{contact.phone}}</a></span></p>
+                        <p>&nbsp;<span ng-if="contact.fax" itemprop="fax"><i class="fa fa-fax"></i>&nbsp;&nbsp;&nbsp;{{contact.fax}}</span></p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-user"></i>

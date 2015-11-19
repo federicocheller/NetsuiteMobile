@@ -1,7 +1,7 @@
 function get(requestParams)
 {
     var result = [];
-    var oaColumns = [new nlobjSearchColumn('entityid'),new nlobjSearchColumn('email'),new nlobjSearchColumn('phone')];
+    var oaColumns = [new nlobjSearchColumn('entityid'),new nlobjSearchColumn('email'),new nlobjSearchColumn('phone'),new nlobjSearchColumn('fax'),new nlobjSearchColumn('contactrole')];
     var oSrch = nlapiSearchRecord('contact', null, null, oaColumns);
     if(oSrch != null && oSrch.length > 0) {
         for (var i = 0; i < oSrch.length; i++) {
@@ -9,6 +9,8 @@ function get(requestParams)
                 entityid: oSrch[i].getValue('entityid')
                 , email: oSrch[i].getValue('email')
                 , phone: oSrch[i].getValue('phone')
+                , fax: oSrch[i].getValue('fax')
+                , contactrole: oSrch[i].getText('contactrole')
             };
 
             result.push(record);
