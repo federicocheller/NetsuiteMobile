@@ -22,6 +22,7 @@ run = function(request, response) {
         html += '<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">';
         html += '<!-- adminlte --><link rel="stylesheet" href="https://system.na1.netsuite.com/core/media/media.nl?id=10388&c=TSTDRV1275821&h=7b7f98d69a86804ab05d&_xt=.css">';
         html += '<!-- adminlte theme --><link rel="stylesheet" href="https://system.na1.netsuite.com/core/media/media.nl?id=10390&c=TSTDRV1275821&h=cd69d12df5132c9eea34&_xt=.css">';
+        html += '<!-- wysihtml5 --><link rel="stylesheet" href="https://system.na1.netsuite.com/core/media/media.nl?id=10510&c=TSTDRV1275821&h=a5124c10bb39b651e244&_xt=.css">';
         html += '<!--[if lt IE 9]><script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script><script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->';
         html += '</head>';
         html += '<body class="hold-transition skin-blue-light sidebar-mini" ng-app="nsmobile">';
@@ -99,9 +100,13 @@ run = function(request, response) {
 
         html += '<ng-include src="contentBody"></ng-include>';
 
+        html += '<script type="text/ng-template" id="templateDashboard"></script>';
         html += '<script type="text/ng-template" id="templateTransactions"></script>';
         html += '<script type="text/ng-template" id="templateTransaction"></script>';
         html += '<script type="text/ng-template" id="templateContacts"></script>';
+        html += '<script type="text/ng-template" id="templateHelp"></script>';
+        html += '<script type="text/ng-template" id="templateChangeEmail"></script>';
+        html += '<script type="text/ng-template" id="templateChangePassword"></script>';
 
         html += '<div class="overlay {{refreshHide}}"><i class="fa fa-refresh fa-spin"></i></div>';
         html += '</div></div></div>';
@@ -143,6 +148,7 @@ run = function(request, response) {
         html += '<!-- bootstrap --><script src="https://system.na1.netsuite.com/core/media/media.nl?id=10392&c=TSTDRV1275821&h=420733b45492a949ec05&_xt=.js"></script>';
         html += '<!-- jquery.slimscroll --><script src="https://system.na1.netsuite.com/core/media/media.nl?id=10394&c=TSTDRV1275821&h=2bf29d0e64e149c4d723&_xt=.js"></script>';
         html += '<!-- fastclick --><script src="https://system.na1.netsuite.com/core/media/media.nl?id=10393&c=TSTDRV1275821&h=9c2980ac16a21ddb485c&_xt=.js"></script>';
+        html += '<!-- wysihtml5 --><script src="https://system.na1.netsuite.com/core/media/media.nl?id=10509&c=TSTDRV1275821&h=6fede2f9b9486c0accfc&_xt=.js"></script>';
         html += '<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>';
         html += '<!-- app --><script src="https://system.na1.netsuite.com/core/media/media.nl?id=10391&c=TSTDRV1275821&h=8b8b32e539240737dc36&_xt=.js"></script>';
         html += '<script>var idUser="' + nlapiGetContext().getUser() + '";var srcUser=getGravatar("'+ nlapiGetContext().getEmail() +'", 160);$("#img-user-image").attr("src", srcUser);$("#img-user-header").attr("src", srcUser);</script>';
