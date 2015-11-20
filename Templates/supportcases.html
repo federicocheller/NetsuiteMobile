@@ -1,0 +1,30 @@
+<script type="text/ng-template" id="templateSupportCases">
+    <div class="box-body">
+        <div id="supportcases_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+            <div class="row">
+                <div class="col-sm-12">
+                    <table id="supportcases" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                        <thead>
+                        <tr role="row">
+                            <th class="sorting_asc text-uppercase" tabindex="0" aria-controls="supportcases" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Case id: activate to sort column descending">Case Id</th>
+                            <th class="sorting text-uppercase" tabindex="0" aria-controls="supportcases" rowspan="1" colspan="1" aria-label="Case tile: activate to sort column ascending">Title</th>
+                            <th class="sorting text-uppercase" tabindex="0" aria-controls="supportcases" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending">Start date</th>
+                            <th class="sorting text-uppercase" tabindex="0" aria-controls="supportcases" rowspan="1" colspan="1" aria-label="Stage: activate to sort column ascending">Stage</th>
+                            <th class="sorting text-uppercase" tabindex="0" aria-controls="supportcases" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending">Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr role="row" class="odd" ng-repeat="supportcase in supportcases">
+                            <td class="sorting_1" ng-click="supportCaseMenu($event)" style="cursor:pointer"><a href="#"><u>{{supportcase.casenumber}}</u></a><input type="hidden" value="{{supportcase.internalid}}"></td>
+                            <td>{{supportcase.title}}</td>
+                            <td>{{supportcase.startdate}}</td>
+                            <td>{{supportcase.stage}}</td>
+                            <td><span class="label label-primary">{{supportcase.status}}</span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>

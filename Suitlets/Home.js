@@ -79,8 +79,9 @@ run = function(request, response) {
         html += '<li><a href="#" ng-click="menu(\'salesorders\',$event)"><i class="fa fa-table"></i> <span>Sales orders</span></a></li>';
         html += '<li><a href="#" ng-click="menu(\'invoices\',$event)"><i class="fa fa-table"></i> <span>Invoices</span></a></li>';
         html += '<li><a href="#" ng-click="menu(\'returnauthorizations\',$event)"><i class="fa fa-table"></i> <span>Return authorizations</span></a></li>';
+        html += '<li><a href="#" ng-click="menu(\'supportcases\',$event)"><i class="fa fa-table"></i> <span>Support cases</span></a></li>';
         html += '<li><a href="#" ng-click="menu(\'contacts\',$event)"><i class="fa fa-users"></i> <span>Contacts</span></a></li>';
-        html += '<li><a href="#" ng-click="menu(\'help\',$event)"><i class="fa fa-question-circle"></i> <span>Need help</span></a></li>';
+        html += '<li><a href="#" ng-click="menu(\'help\',$event)"><i class="fa fa-question-circle"></i> <span>Write us</span></a></li>';
         html += '</ul>';
         html += '</section>';
         html += '</aside>';
@@ -103,6 +104,8 @@ run = function(request, response) {
         html += '<script type="text/ng-template" id="templateDashboard"></script>';
         html += '<script type="text/ng-template" id="templateTransactions"></script>';
         html += '<script type="text/ng-template" id="templateTransaction"></script>';
+        html += '<script type="text/ng-template" id="templateSupportCases"></script>';
+        html += '<script type="text/ng-template" id="templateSupportCase"></script>';
         html += '<script type="text/ng-template" id="templateContacts"></script>';
         html += '<script type="text/ng-template" id="templateHelp"></script>';
         html += '<script type="text/ng-template" id="templateChangeEmail"></script>';

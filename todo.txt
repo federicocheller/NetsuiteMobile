@@ -4,3 +4,6 @@
 . service change password + template
 . template global search + revision global search
 . dashboard template + ?service
+. table sorting plugin
+. status label class dynamic (red, blue, green...)
+. table row class (odd, even)
