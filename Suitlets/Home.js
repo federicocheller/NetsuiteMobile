@@ -75,13 +75,13 @@ run = function(request, response) {
         html += '</form>';
         html += '<ul class="sidebar-menu">';
         html += '<li class="header">MAIN NAVIGATION</li>';
-        html += '<li class="active"><a href="#" ng-click="menu(\'dashboard\',$event)"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>';
-        html += '<li><a href="#" ng-click="menu(\'salesorders\',$event)"><i class="fa fa-table"></i> <span>Sales orders</span></a></li>';
-        html += '<li><a href="#" ng-click="menu(\'invoices\',$event)"><i class="fa fa-table"></i> <span>Invoices</span></a></li>';
-        html += '<li><a href="#" ng-click="menu(\'returnauthorizations\',$event)"><i class="fa fa-table"></i> <span>Return authorizations</span></a></li>';
-        html += '<li><a href="#" ng-click="menu(\'supportcases\',$event)"><i class="fa fa-table"></i> <span>Support cases</span></a></li>';
-        html += '<li><a href="#" ng-click="menu(\'contacts\',$event)"><i class="fa fa-users"></i> <span>Contacts</span></a></li>';
-        html += '<li><a href="#" ng-click="menu(\'help\',$event)"><i class="fa fa-question-circle"></i> <span>Write us</span></a></li>';
+        html += '<li class="active"><a href="#" id="m_dashboard" ng-click="menu(\'dashboard\',$event)"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>';
+        html += '<li><a href="#" id="m_salesorders" ng-click="menu(\'salesorders\',$event)"><i class="fa fa-table"></i> <span>Sales orders</span></a></li>';
+        html += '<li><a href="#" id="m_invoices" ng-click="menu(\'invoices\',$event)"><i class="fa fa-table"></i> <span>Invoices</span></a></li>';
+        html += '<li><a href="#" id="m_returnauthorizations" ng-click="menu(\'returnauthorizations\',$event)"><i class="fa fa-table"></i> <span>Return authorizations</span></a></li>';
+        html += '<li><a href="#" id="m_supportcases" ng-click="menu(\'supportcases\',$event)"><i class="fa fa-table"></i> <span>Support cases</span></a></li>';
+        html += '<li><a href="#" id="m_contacts" ng-click="menu(\'contacts\',$event)"><i class="fa fa-users"></i> <span>Contacts</span></a></li>';
+        html += '<li><a href="#" id="m_help" ng-click="menu(\'help\',$event)"><i class="fa fa-question-circle"></i> <span>Write us</span></a></li>';
         html += '</ul>';
         html += '</section>';
         html += '</aside>';
@@ -90,10 +90,7 @@ run = function(request, response) {
         html += '<h1>{{pageTitle}}';
         html += '<small></small>';
         html += '</h1>';
-        html += '<ol class="breadcrumb">';
-        html += '<li><a href="#"><i class="fa fa-dashboard"></i> Level1</a></li>';
-        html += '<li class="active">Level2</li>';
-        html += '</ol>';
+        html += '<ol class="breadcrumb"></ol>';
         html += '</section>';
         html += '<section class="content">';
 
@@ -172,12 +169,6 @@ run = function(request, response) {
         //html += "<br><input type='button' value='READ CONTACTS' onclick=\"var a = {'Content-Type': 'application/json'};var b = nlapiRequestURL('/app/site/hosting/restlet.nl?script=945&deploy=1&id=" + nlapiGetContext().user + "', null, a);alert(JSON.stringify(b));\" >";
         //var htmlInstruct = form.addField('custpage_p1', 'inlinehtml').setLayoutType('outsideabove', 'startrow');
         //htmlInstruct.setDefaultValue(html);
-
-
-        ///SAMPLE FOR CHANGE MAIL & PASSWORD
-        //var login = nlapiGetLogin();
-        //login.changeEmail('MycUrr3ntPa$$word', 'newemail@netsuite.com', true);
-        //login.changePassword('MycUrr3ntPa$$word', 'MyNeWPaSw0rD!');
 
         /////WORKING VERSION CALL RESTLET FROM SERVER SIDE!!!!!!!!!!!!!
         //var url = 'https://rest.na1.netsuite.com/app/site/hosting/restlet.nl?script=941&deploy=1&k=2';

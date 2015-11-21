@@ -13,10 +13,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr role="row" class="odd" ng-repeat="transaction in transactions">
+                        <tr role="row" ng-repeat="transaction in transactions" ng-class="{odd: $index%2==0, even: !($index%2==0)}">
                             <td class="sorting_1" ng-click="transactionMenu($event)" style="cursor:pointer"><a href="#"><u>{{transaction.tranid}}</u></a><input type="hidden" value="{{transaction.internalid}}"><input type="hidden" value="{{transaction.type}}"></td>
                             <td>{{transaction.trandate}}</td>
-                            <td>{{transaction.amount}}</td>
+                            <td>{{transaction.currency}} {{transaction.amount}}</td>
                             <td><span class="label label-primary">{{transaction.status}}</span></td>
                         </tr>
                     </tbody>

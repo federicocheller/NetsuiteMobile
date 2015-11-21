@@ -1,9 +1,7 @@
-. dynamic breadcrumb
 . service send mail
 . service change email + template
 . service change password + template
 . template global search + revision global search
-. dashboard template + ?service
 . table sorting plugin
 . status label class dynamic (red, blue, green...)
-. table row class (odd, even)
+. offline version?
