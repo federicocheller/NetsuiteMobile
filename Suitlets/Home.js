@@ -65,11 +65,11 @@ run = function(request, response) {
         html += '</header>';
         html += '<aside class="main-sidebar">';
         html += '<section class="sidebar">';
-        html += '<form action="#" method="get" class="sidebar-form">';
+        html += '<form action="#" method="get" class="sidebar-form" onsubmit="return false;">';
         html += '<div class="input-group">';
         html += '<input type="text" name="q" class="form-control" placeholder="Search...">';
         html += '<span class="input-group-btn">';
-        html += '<button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>';
+        html += '<button name="search" id="search-btn" class="btn btn-flat" ng-click="menuSearch($event)"><i class="fa fa-search"></i></button>';
         html += '</span>';
         html += '</div>';
         html += '</form>';
@@ -80,7 +80,7 @@ run = function(request, response) {
         html += '<li><a href="#" id="m_invoices" ng-click="menu(\'invoices\',$event)"><i class="fa fa-table"></i> <span>Invoices</span></a></li>';
         html += '<li><a href="#" id="m_returnauthorizations" ng-click="menu(\'returnauthorizations\',$event)"><i class="fa fa-table"></i> <span>Return authorizations</span></a></li>';
         html += '<li><a href="#" id="m_supportcases" ng-click="menu(\'supportcases\',$event)"><i class="fa fa-table"></i> <span>Support cases</span></a></li>';
-        html += '<li><a href="#" id="m_contacts" ng-click="menu(\'contacts\',$event)"><i class="fa fa-users"></i> <span>Contacts</span></a></li>';
+        html += '<li><a href="#" id="m_contacts" ng-click="menu(\'contacts\',$event)"><i class="fa fa-users"></i> <span>Your contacts</span></a></li>';
         html += '<li><a href="#" id="m_help" ng-click="menu(\'help\',$event)"><i class="fa fa-question-circle"></i> <span>Write us</span></a></li>';
         html += '</ul>';
         html += '</section>';

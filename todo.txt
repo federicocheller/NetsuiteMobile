@@ -1,7 +1,10 @@
-. service send mail
-. service change email + template
-. service change password + template
-. template global search + revision global search
+. template global search + revision global search in transaction search with transaction selectbox
 . table sorting plugin
 . status label class dynamic (red, blue, green...)
 . offline version?
+. move login.html to a suitelet available without login
+. functionality:create new rma
+. functionality:create new order
+. functionality:create new case
+. functionality:estimates list
+

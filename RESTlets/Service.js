@@ -39,10 +39,10 @@ function post(requestParams)
 
     try
     {
-        var subject = "Mail from " + requestParams.mail + " - " + requestParams.subject;
-        var body = requestParams.body;
-        var from = 1882;                            ///todo: set as parameter
-        var to = "federico.cheller@gmail.com";      ///todo: set as parameter
+        var subject = "Mail from " + requestParams.data['mail'] + " - " + requestParams.data['subject'];
+        var body = requestParams.data['body'];
+        var from = nlapiGetContext().getSetting('SCRIPT', 'custscript_zz_chl_emailfrom'); //1882
+        var to = nlapiGetContext().getSetting('SCRIPT', 'custscript_zz_chl_emailto');   //federico.cheller@gmail.com
 
         nlapiSendEmail(from, to, subject, body);
 

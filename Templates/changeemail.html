@@ -1,3 +1,27 @@
 <script type="text/ng-template" id="templateChangeEmail">
-    <div>Change email</div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-body">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                        <input id="form-new-email" type="email" class="form-control" placeholder="New email">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                        <input id="form-confirm-new-email" type="email" class="form-control" placeholder="Confirm new email">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                        <input id="form-password-new-email" type="password" class="form-control" placeholder="Your password">
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <button class="btn btn-primary" ng-click="changeEmail($event)">Submit</button> {{changeMailNotification}}
+                </div>
+            </div>
+        </div>
+    </div>
 </script>
