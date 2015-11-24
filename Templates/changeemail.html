@@ -19,7 +19,10 @@
                     </div>
                 </div>
                 <div class="box-footer">
-                    <button class="btn btn-primary" ng-click="changeEmail($event)">Submit</button> {{changeMailNotification}}
+                    <div ng-bind-html="changeMailNotification"></div>
+                    <div class="pull-right">
+                        <button class="btn btn-primary" ng-click="changeEmail($event)">Submit</button>
+                    </div>
                 </div>
             </div>
         </div>

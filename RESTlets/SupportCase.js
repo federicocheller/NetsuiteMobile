@@ -28,3 +28,32 @@ function get(requestParams)
         return result;
     }
 }
+
+function post(requestParams)
+{
+    var result = new Object();
+
+    try
+    {
+        var id = requestParams.data['id']
+            , title = requestParams.data['title']
+            , message = requestParams.data['message'];
+
+        var supportCase = nlapiCreateRecord('supportcase');
+        supportCase.setFieldValue('title', title);
+        supportCase.setFieldValue('company', id);
+        supportCase.setFieldValue('incomingmessage', message);
+
+        var internalId = nlapiSubmitRecord(supportCase);
+
+        result.status = "success";
+        result.id = internalId;
+        return result;
+    }
+    catch(exc)
+    {
+        result.status = "failed";
+        result.message = exc;
+        return result;
+    }
+}

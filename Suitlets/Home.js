@@ -102,6 +102,7 @@ run = function(request, response) {
         html += '<script type="text/ng-template" id="templateTransactions"></script>';
         html += '<script type="text/ng-template" id="templateTransaction"></script>';
         html += '<script type="text/ng-template" id="templateSupportCases"></script>';
+        html += '<script type="text/ng-template" id="templateCreateSupportCase"></script>';
         html += '<script type="text/ng-template" id="templateSupportCase"></script>';
         html += '<script type="text/ng-template" id="templateContacts"></script>';
         html += '<script type="text/ng-template" id="templateHelp"></script>';

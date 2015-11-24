@@ -5,6 +5,6 @@
 . move login.html to a suitelet available without login
 . functionality:create new rma
 . functionality:create new order
-. functionality:create new case
+. functionality:messages list in support case detail
 . functionality:estimates list
 
