@@ -76,6 +76,7 @@ run = function(request, response) {
         html += '<ul class="sidebar-menu">';
         html += '<li class="header">MAIN NAVIGATION</li>';
         html += '<li class="active"><a href="#" id="m_dashboard" ng-click="menu(\'dashboard\',$event)"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>';
+        html += '<li><a href="#" id="m_estimates" ng-click="menu(\'estimates\',$event)"><i class="fa fa-table"></i> <span>Quotes</span></a></li>';
         html += '<li><a href="#" id="m_salesorders" ng-click="menu(\'salesorders\',$event)"><i class="fa fa-table"></i> <span>Sales orders</span></a></li>';
         html += '<li><a href="#" id="m_invoices" ng-click="menu(\'invoices\',$event)"><i class="fa fa-table"></i> <span>Invoices</span></a></li>';
         html += '<li><a href="#" id="m_returnauthorizations" ng-click="menu(\'returnauthorizations\',$event)"><i class="fa fa-table"></i> <span>Return authorizations</span></a></li>';
