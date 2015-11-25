@@ -35,3 +35,35 @@ function get(requestParams)
         return result;
     }
 }
+
+function post(requestParams)
+{
+    ///sales order:
+    // company id
+    // credit card type
+    // credit card number
+    // credit card expire
+    // currency
+
+    var result = new Object();
+
+    try
+    {
+        var id = requestParams.data['id'];
+
+        var salesOrder = nlapiCreateRecord('salesorder');
+        salesOrder.setFieldValue('company', id);
+        var internalId = nlapiSubmitRecord(salesOrder);
+
+        result.status = "success";
+        result.id = internalId;
+        return result;
+    }
+    catch(exc)
+    {
+        result.status = "failed";
+        result.message = exc;
+        return result;
+    }
+
+}
