@@ -4,7 +4,44 @@ function get(requestParams)
     var type = 'supportcase';
     if(id)
     {
-        return nlapiLoadRecord(type, id);
+        var result = {};
+        var record = nlapiLoadRecord(type, id);
+        result.case = record;
+
+        var messages = [];
+        var oaFilters = [new nlobjSearchFilter('internalid', null, 'is', id), new nlobjSearchFilter('internalonly', 'messages', 'is', 'F')];
+        var oaColumns = [
+            new nlobjSearchColumn('internalid', 'messages')
+            , new nlobjSearchColumn('message', 'messages')
+            , new nlobjSearchColumn('messagedate', 'messages').setSort(true)
+            , new nlobjSearchColumn('hasattachment', 'messages')
+            , new nlobjSearchColumn('author', 'messages')
+        ];
+        var oSrch = nlapiSearchRecord('supportcase', null, oaFilters, oaColumns);
+        if(oSrch != null && oSrch.length > 0) {
+            for (var i = 0; i < oSrch.length; i++) {
+
+                    var message = {
+                        message: oSrch[i].getValue('message', 'messages')
+                        , messagedate: oSrch[i].getValue('messagedate', 'messages')
+                        , author: oSrch[i].getText('author', 'messages')
+                        , hasattachment: oSrch[i].getValue('hasattachment', 'messages')
+                    };
+
+                    ///TEST attachment on messages ????
+                    //if(oSrch[i].getValue('hasattachment', 'messages') == 'T'){
+                    //    var messageRecord = nlapiLoadRecord('message', oSrch[i].getValue('internalid', 'messages'));
+                    //      message.attachmentCount =  messageRecord.getSubList('mediaitem').getLineItemCount();
+                    //}
+
+                    messages.push(message);
+
+            }
+        }
+        result.messages = messages;
+
+
+        return result;
     }
     else
     {

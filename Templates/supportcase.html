@@ -20,6 +20,26 @@
                 <p ng-if="supportcase.origin"><b>Origin:</b> {{supportcase.origin.name}}</p><br>
             </div>
         </div>
+        <div class="row">
+            <div class="col-xs-12 table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th style="width:50%">Messages</th>
+                            <th style="width:20%">Date</th>
+                            <th style="width:30%">Author</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="message in messages">
+                            <td>{{message.message}}</td>
+                            <td>{{message.messagedate}}</td>
+                            <td>{{message.author}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </section>
     <br><br>
 </script>
